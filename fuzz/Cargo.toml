@@ -1,0 +1,26 @@
+[package]
+name = "msrpce-dcerpc-fuzz"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+msrpce-dcerpc = { path = ".." }
+
+[[bin]]
+name = "rpc_pdu_decode"
+path = "fuzz_targets/rpc_pdu_decode.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "bind_ack_decode"
+path = "fuzz_targets/bind_ack_decode.rs"
+test = false
+doc = false
+bench = false

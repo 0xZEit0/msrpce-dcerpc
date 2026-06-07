@@ -1,0 +1,27 @@
+[package]
+name = "msrpce-dcerpc"
+version = "0.1.0"
+edition = "2021"
+authors = ["Ayoub Habibes <ayoubhabibes@gmail.com>"]
+description = "Generic connection-oriented DCE/RPC client primitives for MS-RPCE"
+repository = "https://github.com/0xZEit0/msrpce-rs"
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+keywords = ["dcerpc", "rpc", "ms-rpce", "windows", "client"]
+categories = ["network-programming", "encoding"]
+
+[dependencies]
+libgssapi-sys = { version = "0.3", optional = true }
+msrpce-ndr = { version = "0.1.0", path = "../msrpce-ndr" }
+sspi = { version = "0.21", optional = true }
+tracing = { version = "0.1", optional = true }
+uuid = { version = "1", default-features = false }
+
+[features]
+default = []
+gssapi = ["dep:libgssapi-sys"]
+kerberos-gssapi = ["gssapi"]
+live-tests = []
+ntlm = ["ntlm-sspi"]
+ntlm-sspi = ["dep:sspi"]
+tracing = ["dep:tracing"]
